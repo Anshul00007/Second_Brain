@@ -1,0 +1,63 @@
+# Node modules
+/node_modules/
+
+# Build output
+/build/
+/dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# React Native
+# Uncomment if you're using React Native
+# .expo/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Jest
+coverage/
+
+# dotenv environment files
+.env
+.env.*.local
+
+# npm package lock
+package-lock.json
+yarn.lock
+
+# Yarn v2/Zero-installs
+.pnp.*
+.pnp.js
+
+# Next.js
+.next/
+
+# Parcel-bundler
+.cache/
+
+# Webpack
+/webpack.config.js
+/webpack.config.ts
+
+# Tyepscript
+*.tsbuildinfo
+
+# Mac OS
+.idea/
+
+# IDE specific folders
+.vscode/
+
+# Debug and testing
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
