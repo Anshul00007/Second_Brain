@@ -184,14 +184,14 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-200">
+    <div className="flex h-screen fixed inset-0 overflow-y-auto bg-gray-200">
       <SideBar
         title="Second Brain"
         svgs={<SvgsBrain />}
         onFilterSelect={setFilterType}
       />
-      <div className="flex-1 p-4 overflow-y-auto ml-64">
-        <div className="flex items-center justify-between mt-4">
+      <div className="flex-1 p-4 mr-96 sm:mr-0 overflow-y-auto ml-8 z-20  sm:ml-64">
+        <div className="flex items-center  justify-between mt-4">
           {shareLink && (
             <div className="flex items-center space-x-2">
               <p className="text-xl font-semibold">Your shareable link:</p>
@@ -210,17 +210,17 @@ export default function Dashboard() {
             </div>
           )}
 
-          <div className="flex space-x-4">
+          <div className="flex absolute flex-col items-center sm:flex-row right-4 bottom-72 sm:bottom-0 sm:relative sm:left-0 sm:mt-0 mt-16 space-y-2  sm:space-x-4">
             {!isSharedContent && (
               <Button1
                 title="Add Content"
-                className=" text-purple-600 font-semibold "
+                className=" text-purple-600  font-semibold "
                 Size="lg"
                 onClick={Addme}
               />
             )}
             {!isSharedContent && (
-              <Button1 title="Share Brain" Size="sm" onClick={ShareIt} />
+              <Button1  title="Share Brain" Size="sm" onClick={ShareIt} />
             )}
           </div>
         </div>
@@ -247,7 +247,7 @@ export default function Dashboard() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2  absolute left-8 top-72 sm:top-0 sm:left-0 sm:relative md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filteredContents.map((content) => (
             <motion.div
               key={content._id}
@@ -346,6 +346,9 @@ export default function Dashboard() {
             </motion.div>
           ))}
         </div>
+
+       
+
 
         {isCardVisible && (
           <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-lg z-10"></div>

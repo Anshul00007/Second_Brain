@@ -87,6 +87,7 @@ export default function Signin() {
             title={isLoading ? "Signing In..." : "Sign In"}  
             Size="lg"
             onClick={HandleItmore} 
+            //@ts-ignore
             disabled={isLoading}  
           />
         </motion.div>

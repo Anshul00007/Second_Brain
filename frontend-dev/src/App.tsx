@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css"
 import Landingpage from './Page/Landingpage';
 import Signup from './Page/signup';
 import Signin from './Page/signin';
@@ -15,14 +15,10 @@ function App() {
         <Route path="Signup" element={<Signup />} />
         <Route path="Signin" element={<Signin />} />
         <Route path="Dashboard" element={<Dashboard/>} />
-        <Route path="*" element={<Landingpage />} />
+        <Route path="*" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
-
-      
-
-
-  
+   
     </div>
   );
 }

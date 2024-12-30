@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import Button1 from "./buttonmain";
 import { SvgsTwitter, SvgsDocuments, SvgsLinks, SvgsYoutube } from "./svgs";
 import { useNavigate } from "react-router-dom";
@@ -11,17 +11,36 @@ interface SidebarComponent {
 }
 
 export default function SideBar(props: SidebarComponent) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+   //@ts-ignore
+  const [isMobile, setIsMobile] = useState(false);  
   const navigate = useNavigate();
 
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); 
   };
 
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {  
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className={`h-screen ${isSidebarOpen ? "w-64" : "w-8"} left-[-26px] top-0 absolute bg-white rounded-[33px] transition-all duration-300 z-10`}>
     
-      {isSidebarOpen && (
+      {isSidebarOpen && (  
         <div className="absolute left-[55px] top-[60px] text-left text-black text-[24px] font-serif leading-[64px] overflow-hidden">
           <div className="flex items-center space-x-2">
             {props.svgs}
@@ -30,7 +49,7 @@ export default function SideBar(props: SidebarComponent) {
         </div>
       )}
 
-      {isSidebarOpen && (
+      {isSidebarOpen && (  
         <div className="absolute left-[40px] top-[150px] space-y-8">
           <div className="flex items-center">
             <Button1 title="Twitter" Size="md" svgs={<SvgsTwitter />} onClick={() => props.onFilterSelect('tweet')}  className="transition-all duration-300 mt-4 hover:bg-gray-300 hover:scale-105 rounded-md p-8" />
@@ -56,7 +75,7 @@ export default function SideBar(props: SidebarComponent) {
               }}
               className="bg-red-600 text-lg text-white mt-96 transition-all duration-300 hover:bg-red-800 hover:scale-105 rounded-md p-8 flex items-center justify-center space-x-2"
             >
-              Logout
+              <span className="font-bold">Logout</span>
             </Button1>
           </div>
         </div>
